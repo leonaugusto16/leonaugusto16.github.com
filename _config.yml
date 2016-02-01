@@ -6,10 +6,9 @@ url: http://leonaugusto16.github.io/
 permalink: /:title/
 
 analytics: 'UA-MYANALYTICS'
-facebook: myfacebook
-instagram: myinstagram
+facebook: https://www.facebook.com/leon.augusto.7
 linkedin: mylinkedin
-github: mygithub
+github: https://github.com/leonaugusto16
 email: leonaugusto16@gmail.com
 
 exclude: [README.md, Gemfile, Gemfile.lock, node_modules, gulpfile.js, package.json, _site, src, vendor]
