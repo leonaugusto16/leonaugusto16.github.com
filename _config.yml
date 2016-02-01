@@ -1,20 +1,16 @@
-name: John Doe
-bio: 'A Man who travels the world eating noodles'
-picture: 'assets/images/profile.jpg'
+name: Léon Augusto
+bio: '# Hello World #'
+picture: 'assets/images/leon_profile.jpg'
 
-url: http://sergiokopplin.github.io/indigo
+url: http://leonaugusto16.github.io/
 permalink: /:title/
 
 analytics: 'UA-MYANALYTICS'
-disqus: mydisqus
 facebook: myfacebook
-twitter: mytwitter
 instagram: myinstagram
 linkedin: mylinkedin
-youtube: myyoutube
-spotify: myspotify
 github: mygithub
-email: myemail@gmail.com
+email: leonaugusto16@gmail.com
 
 exclude: [README.md, Gemfile, Gemfile.lock, node_modules, gulpfile.js, package.json, _site, src, vendor]
 
