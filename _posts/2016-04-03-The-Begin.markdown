@@ -6,5 +6,22 @@ tag: markdown
 #star: true
 ---
 
+# The Begin!
 
-Teste de página
+Caro Leitor,
+
+Não sei como chegou até aqui mas espero que aprenda e se divirta com os meus posts. Quero explicar como nasceu a idéia desse blog para que você não se fruste e que entenda minha mensagem, esse blog existe por dois motivos:
+
+  * Primeiro pela necessidade que eu tenho em escrever e documentar meus estudos, por participar de um grupo de extensão sempre parti do princípio que o conhecimento tem que ser compartilhado e sempre fiz isso por meio de treinamento e workshops. Agora tentarei por meio desse blog, então se após ler um post você tenha aprendido e consiga aplicar em sua carreira, seja ela acadêmica ou no mercado de trabalho, então meu objetivo foi cumprido.
+  * Em segundo lugar, esse blog não se destina a falar de minhas resoluções de CTF ou outras coisas gratificantes que eu tenha feito na minha carreira, mas sim de minhas dúvidas e aprendizados. Um dos motivos dele existir é discutir problemas e desafios em que tive dificuldade ou fracasso em resolver por falta de conhecimento, e tentarei dissertar sobre eles sempre trazendo referências.
+
+Peço ao leitor que não aceite minhas interpretações e ponto de vista sobre os assuntos como verdade única, meu objetivo não é te ensinar, mas sim te fazer pensar. Tenha dúvidas, leia referências e crie seu próprio ponto de vista seja ele para concordar comigo ou discordar.
+
+No momento em que escrevo esse texto ainda sou um aluno de graduação querendo passar em AD, não tenho anos de experiência ou um doutorado no currículo, mas tenho um ponto de vista que pode interessar ao leitor que procura assuntos como segurança da informação principalmente, e a minha garantia que esses posts vão tratar de assuntos muito além dos vistos nas suas aulas chatas da graduação e de forma ácida e divertida, no melhor estilo piratas do silício.
+
+Qualquer dúvida sobre os assuntos abordados, reclamações, engano ou somente um obrigado podem me mandar por email, não tenha vergonha, eu vou adorar compartilhar e aprender com você. 
+
+ leonaugusto16 [at] gmail [dot] com
+ 
+ ![Markdowm Image][https://imgnzn-a.akamaized.net/2014/2/materias/6922421082214122.png?w=1040]
+
