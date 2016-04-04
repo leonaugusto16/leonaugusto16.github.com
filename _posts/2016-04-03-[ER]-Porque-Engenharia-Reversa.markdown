@@ -183,7 +183,7 @@ Essa execução é muito longa, então não coloquei todo o output, só a parte 
 
 Agora que conseguimos um ótimo indício da nossa teoria vamos analisar o assembly em busca de pistas, iremos focar na análise da nossa main, iremos usar [peda] como nossa assistente para podermos olhar a pilha e registradores.
 
-```assembly
+```c
 gdb-peda$ break main
 Breakpoint 1 at 0x400e91
 gdb-peda$ run
@@ -234,7 +234,7 @@ Missing separate debuginfos, use: dnf debuginfo-install libgcc-5.1.1-4.fc22.x86_
 
 Primeiro criamos um breakpoint no início na main, e executamos até chegarmos em um ponto que nos interesse, aconselho a abrirem o assembly do binário enquanto leem esse texto, para quem não sabe como fazer isso leia [objdump]. Prometi ser objetivo para não alongar a resolução, após muitos next's na execução desse binário:
 
-```assembly
+```c
 gdb-peda$ next
 [----------------------------------registers-----------------------------------]
 RAX: 0x7fffffffdc80 --> 0x616c68 ("36d04a9d74392c727b1a9bf97a7bcbac")
@@ -280,7 +280,7 @@ Legend: code, data, rodata, value
 
 Para os leitores mais atentos, já devem ter percebido que nosso input (que pode ser visto na pilha no endereço *8[%esp]* ), já se transformou em uma hash md5 e está no registrador RAX, a partir desse ponto as coisas ficam interessantes.
 
-```assembly
+```c
 gdb-peda$ next
 [----------------------------------registers-----------------------------------]
 RAX: 0x33 ('3')
@@ -328,7 +328,7 @@ Vamos por partes nesse momento, quando nossa pilha estava apontando para ``` <ma
 
 Agora que aprendemos como a verificação é feita vamos ao assembly olhar o valor de cada comparação e montar a hash da chave do nosso problema:
 
-```assembly
+```c
 "Trecho da main"
   400f36:	3c 37                	cmp    $0x37,%al                --> '7'
   400f38:	0f 85 5d 03 00 00    	jne    40129b <main+0x40e>
