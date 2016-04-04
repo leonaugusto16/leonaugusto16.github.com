@@ -508,7 +508,7 @@ Segue uma imagem de consideração ao código:
 
    [Engenharia Reversa]: <https://pt.wikipedia.org/wiki/Engenharia_reversa>
    [Assembly]: <https://pt.wikipedia.org/wiki/Assembly>
-   [dMd]: <http://leonaugusto16.github.io/src/files/Descobrindo-Senhas-com-ER?/dMd>
+   [dMd]: <https://raw.githubusercontent.com/leonaugusto16/leonaugusto16.github.io/master/src/files/Descobrindo-Senhas-com-ER%3F/dMd>
    [strings]: http://linux.die.net/man/1/strings
    [gdb]: http://linux.die.net/man/1/gdb
    [objdump]: http://linux.die.net/man/1/objdump
