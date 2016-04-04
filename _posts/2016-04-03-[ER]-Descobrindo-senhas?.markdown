@@ -120,7 +120,7 @@ Na análise desse binário vamos ser objetivos, em posts futuros iremos nos aven
 
 Segue uma imagem relaxante para ajudar a pensar:
 
- ![Markdowm Image][http://i.imgur.com/pUbW58H.jpg]
+ ![Markdowm Image](http://i.imgur.com/pUbW58H.jpg)
  
 Pronto já? Então vamos seguir ...
 
