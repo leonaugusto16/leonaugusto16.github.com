@@ -2,12 +2,11 @@
 
 Oi Caro leitor!
 
-Hoje nós vamos falar sobre Engenharia Reversa, pessoalmente é um assunto que me interesso bastante por isso foi escolhido como primeiro post. Vamos primeiro listar referências básicas para a compreensão total do texto:
+Hoje nós vamos falar sobre Engenharia Reversa. Vamos primeiro listar referências básicas para a compreensão total do texto:
 
 * [Engenharia Reversa]
 * [Assembly]
 
-OBS: Outras referências mais avançadas junto ao texto.
 
 ### Objetivo
 
@@ -20,7 +19,7 @@ Hoje nosso problema se caracteriza em executarmos um binário que nos pede uma s
 ```sh
 $ ./dMd
 Enter the valid key!
-AAAAAA                                                        <-- Nosso Input
+AAAAAA                      <-- Nosso Input
 Invalid Key! :(
 ```
 ```sh
@@ -32,7 +31,7 @@ Faça o download do binário em [dMd].
 
 ### Preparação
 
-Se o leitor já tiver uma experiência sabe que a soulução mais básica para esse problema é usar o famoso comando [strings] do linux para vermos todas as strings presentes no arquivo, apesar de ser uma tática interessante principalmente se você estiver em um CTF, mas não serve para nosso propósito agora. Mesmo que o leitor se anime com essa tática ela não funciona, obviamente se funcionasse não estariamos aqui, mas indico ao leitor que nunca usou o [strings] testar, esse comando pode ser bem útil em alguns cenários.
+Se o leitor já tiver uma experiência sabe que a solução mais básica para esse problema é usar o famoso comando [strings] do linux para vermos todas as strings presentes no arquivo, apesar de ser uma tática interessante principalmente se você estiver em um CTF, mas falar sobre [strings] não serve para nosso propósito agora, mesmo que o leitor se anime com essa tática ela não funciona para o nosso binário, obviamente se funcionasse não estariamos aqui, mas indico ao leitor que nunca usou o [strings] testar, esse comando pode ser bem útil em alguns cenários.
 
 Já que essa tática inicial não funcionou precisamos quebrar um pouco mais a cabeça e usar nossos conhecimentos em ER, segue as ferramentas que usaremos para nos auxiliar:
 
@@ -116,18 +115,20 @@ Non-debugging symbols:
 0x0000000000402894  _fini
 ```
 
-Na análise desse binário vamos ser objetivos, em posts futuros iremos nos aventurar melhor nas outras funções, por agora vamos nos prender a solução do problema. Nós já sabemos como o código funciona, ele é bem simples, o input é uma chave e a saída é uma mensagem de erro ou a flag, peço ao leitor que pare um pouco a leitura para analisar a saída do gdb e os possíveis funções que teremos qque analisar para cumprir nosso objetivo.
+Na análise desse binário vamos ser objetivos, em posts futuros iremos nos aventurar melhor nas outras funções, por agora vamos nos prender a solução do problema. Nós já sabemos como o código funciona, ele é bem simples, o input é uma chave e a saída é uma mensagem de erro ou de êxito, peço ao leitor que pare um pouco a leitura para analisar a saída do gdb e os possíveis funções que teremos que analisar para cumprir nosso objetivo.
 
 Segue uma imagem relaxante para ajudar a pensar:
 
  ![Markdowm Image](http://i.imgur.com/pUbW58H.jpg)
  
+
+
 Pronto já? Então vamos seguir ...
 
 Tenho certeza que o leitor seguiu um padrão para analisar o problema, mas vamos olhar dois pontos primeiramente:
 
-* A função main, como o leitor já pode ter notado pode ser uma ótima condidata, aparentemente não vemos outra função criada pelo desenvolvedor do nosso binário, por ser um programa simples podemos trabalhar com a dedução que temos na mão um código megazord todo na main.
-* A função MD5, para quem é um pouco mais atento pode ter percebido essa função (e suas 10 referências), se fosse criar uma teoria diria que o nosso input está sendo transformado em um [hash MD5] e depois comparado com a da nossa tão querida chave. Como provar essa teoria? Esse é uma boa pergunta, vamos dar uma olhada  com [ltrace],  e ver o que ele chama:
+* A função **main**. Como o leitor já pode ter notado pode ser uma ótima condidata, aparentemente não vemos outra função criada pelo desenvolvedor do nosso binário, por ser um programa simples podemos trabalhar com a dedução que temos na mão um código megazord, todo feito na main.
+* A função **MD5**. Para quem é um pouco mais atento pode ter percebido essa função (e suas 10 referências). Se fosse criar uma teoria diria que o nosso input está sendo transformado em um [hash MD5] e depois comparado com a da nossa tão querida chave. Como provar essa teoria? Esse é uma boa pergunta, vamos dar uma olhada  com [ltrace], e ver o que ele chama:
 
 ```sh
 $ ltrace ./dMd
@@ -169,7 +170,7 @@ sprintf("cb", "%02x", 0xcb)                                                     
 sprintf("ac", "%02x", 0xac)                                                                             = 2
 ```
 
-Essa execução é muito longa, então não coloquei toda a execução, só a parte que precisamos. Sabemos que o binário utiliza uma função MD5, por analogia podemos procurar os outputs algo parecido com nossa função de hash, se o leitor ainda não percebeu indico jogar o nosso input **"AAAAAA"** em qualquer site de hash md5 e comparar com o arquivo acima.
+Essa execução é muito longa, então não coloquei todo o output, só a parte que precisamos. Sabemos que o binário utiliza uma função ***MD5***, por analogia podemos procurar nos outputs algo parecido com nossa função de hash, se o leitor ainda não percebeu indico jogar o nosso input **"AAAAAA"** em qualquer site de hash md5 e comparar com o arquivo acima.
 
 Agora que conseguimos um ótimo indício da nossa teoria vamos analisar o assembly em busca de pistas, iremos focar na análise da nossa main, iremos usar [peda] como nossa assistente para podermos olhar a pilha e registradores.
 
@@ -222,7 +223,7 @@ Breakpoint 1, 0x0000000000400e91 in main ()
 Missing separate debuginfos, use: dnf debuginfo-install libgcc-5.1.1-4.fc22.x86_64 libstdc++-5.1.1-4.fc22.x86_64
 ```
 
-Primeiro criamos um breakpoint no início na main, e executamos até chegarmos em um ponto que nos interesse, aconselho a abrirem o assembly do binário enquanto leem esse texto, para quem não sabe com fazer isso leia [objdump]. Prometi ser objetivo para não alongar, então após muitos next's na execução desse binário:
+Primeiro criamos um breakpoint no início na main, e executamos até chegarmos em um ponto que nos interesse, aconselho a abrirem o assembly do binário enquanto leem esse texto, para quem não sabe como fazer isso leia [objdump]. Prometi ser objetivo para não alongar a resolução, após muitos next's na execução desse binário:
 
 ```assembly
 gdb-peda$ next
@@ -314,7 +315,7 @@ Legend: code, data, rodata, value
 0x0000000000400f36 in main ()
 ```
 
-Vamos por partes nesse momento, quando nossa pilha estava apontando para ``` <main+162> ``` jogamos o hash de nosso chute da chave para o registrador *rax* , o próximo endereço ``` <main+166> ``` executamos a instrução ``` movzx  eax,BYTE PTR [rax] ``` pegando assim a primeira parte do byte e enviando ao registrador *eax*, valor **"3"** nesse caso. Logo após na instrução ``` <main+169> ``` comparamos com o valor ```0x37```, valor **"7"** em ASCII. A próxima instrução é um ```jne```, nessas horas o leitor já deve ter percebido onde isso irá nos levar, e sim como vocẽ já deve ter percebido esse ```JUMP``` nos leva a um triste ```Invalid Key! :(```
+Vamos por partes nesse momento, quando nossa pilha estava apontando para ``` <main+162> ``` jogamos o hash de nosso chute da chave para o registrador *rax* , o próximo endereço ``` <main+166> ``` executamos a instrução ``` movzx  eax,BYTE PTR [rax] ``` pegando assim a primeira parte do byte e enviando ao registrador *eax*, valor **"3"** nesse caso. Logo após na instrução ``` <main+169> ``` comparamos com o valor ```0x37```, valor **"7"** em ASCII. A próxima instrução é um ```jne```, nesse ponto o leitor já deve ter percebido onde isso irá nos levar, e sim como você já deve ter percebido esse ```JUMP``` nos leva a um triste ```Invalid Key! :(```
 
 Agora que aprendemos como a verificação é feita vamos ao assembly olhar o valor de cada comparação e montar a hash da chave do nosso problema:
 
@@ -505,3 +506,4 @@ Segue uma imagem de consideração ao código:
    [peda]: https://github.com/longld/peda
    [hash MD5]:https://pt.wikipedia.org/wiki/MD5
    [ltrace]: http://linux.die.net/man/1/ltrace
+   [MD5]: http://www.md5online.org/
