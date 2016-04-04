@@ -478,7 +478,24 @@ Agora que aprendemos como a verificação é feita vamos ao assembly olhar o val
   401183:	3c 30                	cmp    $0x30,%al                --> '0'
   401185:	0f 85 10 01 00 00    	jne    40129b <main+0x40e>
 ```
-Logo nossa hash 
+   
+Logo nossa hash da chave será ```780438d5b6e29db0898bc4f0225935c0```, usando um *"decrypt"* de [MD5] conseguimos nossa chave ```b781cbb29054db12f88f08c6e161c199```.
+
+```sh
+$ ./dMd
+Enter the valid key!
+b781cbb29054db12f88f08c6e161c199
+The key is valid :)
+```
+
+### Conclusão
+
+Usamos de estratégia e conhecimento simples em assembly para resolver esse problema, essa é a base da Engenharia Reversa, nos próximos posts vamos continuar falando sobre esse assunto mas vamos focar em alguns aspectos e aprofundá-los. Isso é tudo galera!
+
+Segue uma imagem de consideração ao código:
+
+![Markdowm Image](http://s2.quickmeme.com/img/b3/b3833e9a8239455c8673839cb4e83ec3754a13df7de605e41a021cc6e0960886.jpg)
+
    [Engenharia Reversa]: <https://pt.wikipedia.org/wiki/Engenharia_reversa>
    [Assembly]: <https://pt.wikipedia.org/wiki/Assembly>
    [dMd]: <leonaugusto16.github.io/src/files/Descobrindo-Senhas-com-ER?/dMd>
