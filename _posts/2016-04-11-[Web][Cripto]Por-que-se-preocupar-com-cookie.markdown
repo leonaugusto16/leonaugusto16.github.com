@@ -25,4 +25,11 @@ Nosso objetivo hoje é demonstrar a fragilidade de sistemas que não se preocupa
 
 Hoje nosso problema se caracteriza em acessarmos uma aplicação que usa um sistema de cookies baseado em uma criptografia simétrica chamada de ECB (Electronic Codebook), calma, vamos conversar sobre ele daqui a pouco. E a partir dessa geração pobre de sessão iremos subir de usuário comum para um usuário admin.
 
-![Markdowm Image](http://i.imgur.com/pUbW58H.jpg)
+![Markdowm Image](https://raw.githubusercontent.com/leonaugusto16/leonaugusto16.github.io/editor/src/images/toil33t-ecb.png)
+
+OBS: Agradecimento em especial ao CTF do [Nuit du Hack 2016](https://www.nuitduhack.com/en/) que fez esse desafio e me deixou a madrugada inteira pensando sobre ele.
+
+
+### Preparação
+
+Já sabemos o que
