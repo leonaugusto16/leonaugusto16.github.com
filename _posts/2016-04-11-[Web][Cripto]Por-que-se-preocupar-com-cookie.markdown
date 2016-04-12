@@ -71,5 +71,18 @@ Sabendo que o objetivo era criptografar a imagem do nosso amado pinguim Tux, o l
 ![Markdowm Image](http://quantum.abstractj.org/talks/2013/rubyconf/krypt/img/penguin.png)
 
 
+
 #### Detecção da Vulnerabilidade
+
+Talvez o jeito mais simples de identificar essa vulnerabilidade seja logar na aplicação inúmeras vezes, ao usar o modo ECB o cookie gerado sempre será o mesmo, esse é o **maior indício que há algo de errado com o método de criação dos cookies.**. Então temos que um controle de sessão seguro o cookie enviado deve ser único a cada vez que efetuar login. Se o cookie é sempre o mesmo, **ele provavelmente será sempre válido.**
+
+
+### Conclusão
+
+Isso é tudo por hoje, ainda não chegamos ao nosso objetivo e nem entramos em nosso ambiente de testes, somente introduzimos alguns conhecimentos que iremos precisar na segunda parte. Um dos objetivos da divisão dos posts em partes é não cansar o leitor, acho que já tivemos informação demais para o leitor pensar sobre o assunto.
+
+Na segunda parte vamos entrar de cabeça no nosso desafio e ganhar acesso de administrador sem ao menos tentar "quebrar" a criptografia, mas sim movendo a cifra de acordo com nossas necessidades. 
+
+
+![Markdowm Image](https://image.spreadshirtmedia.com/image-server/v1/compositions/111575286/views/1,width=235,height=235,appearanceId=2,backgroundColor=f9f9f9,version=1457074264/ECB-Penguin-T-Shirts.jpg)
 
