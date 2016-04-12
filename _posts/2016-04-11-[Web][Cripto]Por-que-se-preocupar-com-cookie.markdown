@@ -74,7 +74,7 @@ Sabendo que o objetivo era criptografar a imagem do nosso amado pinguim Tux, o l
 
 #### Detecção da Vulnerabilidade
 
-Talvez o jeito mais simples de identificar essa vulnerabilidade seja logar na aplicação inúmeras vezes, ao usar o modo ECB o cookie gerado sempre será o mesmo, esse é o **maior indício que há algo de errado com o método de criação dos cookies.**. Então temos que um controle de sessão seguro o cookie enviado deve ser único a cada vez que efetuar login. Se o cookie é sempre o mesmo, **ele provavelmente será sempre válido.**
+Talvez o jeito mais simples de identificar essa vulnerabilidade seja logar na aplicação inúmeras vezes, ao usar o modo ECB o cookie gerado sempre será o mesmo, esse é o **maior indício que há algo de errado com o método de criação dos cookies.**. Então temos que em um controle de sessão "seguro", o cookie enviado deve ser único a cada vez que efetuar login. Se o cookie é sempre o mesmo, **ele provavelmente será sempre válido.**
 
 
 ### Conclusão
