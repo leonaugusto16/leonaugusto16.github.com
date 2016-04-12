@@ -6,7 +6,7 @@ tag: markdown
 #star: true
 ---
 
-# Por que se preocupar com cookie?
+# Por que se preocupar com cookie? [Parte 1]
 
 
 Oi Caro Leitor,
@@ -15,7 +15,7 @@ Hoje nós vamos mudar um pouco de assunto, vamos conversar sobre criação de co
 
 * [Cookie](https://pt.wikipedia.org/wiki/Cookie_HTTP)	
 * [Controle de sessão em php](http://pt.slideshare.net/dmartins/aula-11-controle-de-sesso-em-php-programao-web)
-
+* [Cifra de bloco](https://en.wikipedia.org/wiki/Block_cipher)
 
 ### Objetivo
 
