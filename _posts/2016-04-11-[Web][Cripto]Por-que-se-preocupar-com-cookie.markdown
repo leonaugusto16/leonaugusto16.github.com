@@ -6,7 +6,7 @@ tag: markdown
 #star: true
 ---
 
-# Por que se preocupar com cookie?
+# Por que se preocupar com cookie? [Parte 1]
 
 
 Oi Caro Leitor,
@@ -15,6 +15,7 @@ Hoje nós vamos mudar um pouco de assunto, vamos conversar sobre criação de co
 
 * [Cookie](https://pt.wikipedia.org/wiki/Cookie_HTTP)	
 * [Controle de sessão em php](http://pt.slideshare.net/dmartins/aula-11-controle-de-sesso-em-php-programao-web)
+* [Cifra de bloco](https://en.wikipedia.org/wiki/Block_cipher)
 
 
 ### Objetivo
@@ -74,7 +75,7 @@ Sabendo que o objetivo era criptografar a imagem do nosso amado pinguim Tux, o l
 
 #### Detecção da Vulnerabilidade
 
-Talvez o jeito mais simples de identificar essa vulnerabilidade seja logar na aplicação inúmeras vezes, ao usar o modo ECB o cookie gerado sempre será o mesmo, esse é o **maior indício que há algo de errado com o método de criação dos cookies.**. Então temos que um controle de sessão seguro o cookie enviado deve ser único a cada vez que efetuar login. Se o cookie é sempre o mesmo, **ele provavelmente será sempre válido.**
+Talvez o jeito mais simples de identificar essa vulnerabilidade seja logar na aplicação inúmeras vezes, ao usar o modo ECB o cookie gerado sempre será o mesmo, esse é o **maior indício que há algo de errado com o método de criação dos cookies.**. Então temos que em um controle de sessão "seguro", o cookie enviado deve ser único a cada vez que efetuar login. Se o cookie é sempre o mesmo, **ele provavelmente será sempre válido.**
 
 
 ### Conclusão
