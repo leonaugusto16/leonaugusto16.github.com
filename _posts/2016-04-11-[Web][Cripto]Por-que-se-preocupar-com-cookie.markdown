@@ -24,7 +24,7 @@ Nosso objetivo hoje é demonstrar a fragilidade de sistemas que não se preocupa
 
 ### Problema
 
-Hoje nosso problema se caracteriza em acessarmos uma aplicação que usa um sistema de cookies baseado em uma criptografia simétrica chamada de ECB (Electronic Codebook), calma, vamos conversar sobre ele daqui a pouco. E a partir dessa geração pobre de sessão iremos subir de usuário comum para um usuário admin.
+Hoje nosso problema se caracteriza em acessarmos uma aplicação que usa um sistema de cookies baseado em uma criptografia simétrica usando o modo ECB (Electronic Codebook), calma, vamos conversar sobre ele daqui a pouco. E a partir dessa geração pobre de sessão iremos subir de usuário comum para um usuário admin.
 
 ![Markdowm Image](https://raw.githubusercontent.com/leonaugusto16/leonaugusto16.github.io/editor/src/images/toil33t-ecb.png)
 
@@ -40,7 +40,7 @@ Já sabemos o que é cookie, espero pelo menos :+1:, agora precisamos saber como
 #### Electronic Code Book (ECB)
 
 
-Vamos detalhar a exploração de uma fraqueza na autenticação comum em sites feitos em PHP. O site acima usa ECB para criptografar informações fornecidas pelos usuários e usar essas informações para garantir a autenticação. Talvez a melhor definição desse método esteja na [Wikipedia](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#ECB):
+Vamos detalhar a exploração de uma fraqueza na autenticação comum em sites feitos em PHP. O site acima usa o modo ECB para criptografar informações fornecidas pelos usuários e usar essas informações para garantir a autenticação. Talvez a melhor definição desse método esteja na [Wikipedia](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#ECB):
 
 * **"Um simples modo de criptografar [...]. A mensagem é dividida em blocos, e cada bloco é criptografado separadamente."**
 
@@ -51,6 +51,9 @@ Para olhares mais atentos somente com essa definição já é o bastante. Antes 
 3.	**Propagação de erro:** um ou mais erros de bits em um único bloco de texto cifrado afetam a descriptação de apenas esse bloco.
 
 OBS: Os 4 modos mais usados para criar uma cifra são ECB, CBC, CFB e OFB. Esses 3 últimos não serão vistos nesse post, talvez em um futuro próximo.
+
+OBS2: Lembre-se que esses modos não são a criptografia em si, mas somente um modo de separar a mensagem em blocos que serão criptografados, esses modos estão presentes em todas as criptografias simétricas. Por exemplo AES, DES, 3DES, etc.
+
 
 O modo tem o seguinte esquema para criptografar e descriptografar:
 
@@ -66,7 +69,7 @@ Para o leitor deve ser uma abstração falarmos de encontrar padrões, já que t
 
 ![Markdowm Image](http://i.stack.imgur.com/bXAUL.png)
 
-Sabendo que o objetivo era criptografar a imagem do nosso amado pinguim Tux, o leitor pode decidir por si mesmo se o ECB é uma boa forma de cumprir o objetivo. Agora que sabemos o que é ECB, as perguntas que ficam é como identificar que um cookie foi gerado a partir desse modo e quantos projetos pessoais do leitor usam esse modo e ele nem se importou de verificar ou ler na documentação da framework. A segunda pergunta não posso responder, mas a primeira está após a imagem abaixo de reforço de aprendizado.
+Sabendo que o objetivo era criptografar a imagem do nosso amado pinguim Tux usando ECB (figura do meio), o leitor pode decidir por si mesmo se o ECB é uma boa forma de cumprir o objetivo. Agora que sabemos o que é ECB, as perguntas que ficam é como identificar que um cookie foi gerado a partir desse modo e quantos projetos pessoais do leitor usam esse modo e ele nem se importou de verificar ou ler na documentação da framework. A segunda pergunta não posso responder, mas a primeira está após a imagem abaixo de reforço de aprendizado.
 
 
 ![Markdowm Image](http://quantum.abstractj.org/talks/2013/rubyconf/krypt/img/penguin.png)
@@ -75,7 +78,7 @@ Sabendo que o objetivo era criptografar a imagem do nosso amado pinguim Tux, o l
 
 #### Detecção da Vulnerabilidade
 
-Talvez o jeito mais simples de identificar essa vulnerabilidade seja logar na aplicação inúmeras vezes, ao usar o modo ECB o cookie gerado sempre será o mesmo, esse é o **maior indício que há algo de errado com o método de criação dos cookies.**. Então temos que em um controle de sessão "seguro", o cookie enviado deve ser único a cada vez que efetuar login. Se o cookie é sempre o mesmo, **ele provavelmente será sempre válido.**
+Talvez o jeito mais simples de identificar essa vulnerabilidade seja logar na aplicação inúmeras vezes, ao usar o modo ECB o cookie gerado sempre será o mesmo, esse é o **maior indício que há algo de errado com o método de criação dos cookies**. Então temos que em um controle de sessão "seguro", o cookie enviado deve ser único a cada vez que efetuar login. Se o cookie é sempre o mesmo, **ele provavelmente será sempre válido.**
 
 
 ### Conclusão
